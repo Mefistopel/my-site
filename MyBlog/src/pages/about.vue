@@ -1,7 +1,11 @@
 <template>
   <q-page class="flex ">
-    <h1>Андрей Янусов</h1>
-    <p>О странице!</p>
+    <q-layout-drawer
+      content-class="bg-grey-3"
+      :content-style="{padding: '20px'}"
+      side="left"
+    >
+    </q-layout-drawer>
   </q-page>
 </template>
 

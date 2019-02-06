@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
       <q-toolbar
-        color="primary"
+        color="purple-9"
         :glossy="$q.theme === 'mat'"
         :inverted="$q.theme === 'ios'"
       >
@@ -15,28 +15,59 @@
         >
           <q-icon name="menu" />
         </q-btn>
-
-        <q-toolbar-title>
-          Личная страница
-          <div slot="subtitle">Андрей Янусов </div>
-        </q-toolbar-title>
+        <q-btn
+          class="gt-md"
+          flat
+          label="Андрей Янусов"
+          no-caps
+          @click="$router.push('/')"
+        />
       </q-toolbar>
+      <!-- <q-toolbar-title>
+          {{ timeData }}
+      </q-toolbar-title> -->
     </q-layout-header>
 
     <q-layout-drawer
       v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
+      :content-class="$q.theme === 'mat' ? 'black' : null"
+      :content-style="{'background-color': '#6A1B9A'}"
     >
       <q-list
         no-border
         link
         inset-delimiter
+        dark
       >
         <q-list-header>Страницы</q-list-header>
         <q-item to="about">
-          <q-item-side icon="school" />
-          <q-item-main label="Об авторе" sublabel="Немного обо мне" />
+          <q-item-side icon="book" />
+          <q-item-main label="Кто я" sublabel="Немного обо мне" />
         </q-item>
+         <q-item to="link">
+          <q-item-side icon="school" />
+          <q-item-main label="Курсы" sublabel="Создаю курсы по известному" />
+        </q-item>
+       <q-collapsible indent icon="school" label="Курсы" sublabel="Создаю курсы по известному">
+         <q-item
+          :to="'link'"
+         >
+          <q-item-side icon="rss feed" />
+          <q-item-main  sublabel="Системный анализ" />
+        </q-item>
+        <q-collapsible label="Системный анализ">
+          <q-item
+          v-for="men in 5"
+          :key="men"
+          :to="'link'"
+         >
+          <q-item-main  :sublabel="men + ' Введение'" />
+        </q-item>
+        </q-collapsible>
+        <q-collapsible label="Yesterday">
+          <div>...content...</div>
+        </q-collapsible>
+      </q-collapsible>
         <q-item to="link">
           <q-item-side icon="record_voice_over" />
           <q-item-main label="Знакомлюсь" sublabel="Познакомлюсь с девушкой ^_^" />
@@ -45,13 +76,13 @@
           <q-item-side icon="chat" />
           <q-item-main label="Личные достижения" sublabel="https://discord.gg/5TDhbDg" />
         </q-item>
-        <q-item >
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
+        <q-item @click.native="openURL('https://vk.com/im?sel=44035224')">
+          <q-item-side icon="send"  />
+          <q-item-main label="Напиши мне в ВК!" sublabel="Давай, не стесняйся!" />
         </q-item>
-        <q-item @click.native="openURL('https://twitter.com/quasarframework')">
-          <q-item-side icon="rss feed" />
-          <q-item-main label="Twitter" sublabel="@quasarframework" />
+        <q-item @click.native="openURL('https://www.instagram.com/an.yanusov/')">
+          <q-item-side icon="check_box" />
+          <q-item-main label="Instagramm" sublabel="@an.yanusov" />
         </q-item>
       </q-list>
     </q-layout-drawer>
@@ -73,7 +104,12 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    startCounting () {
+      this.hndl = setInterval(() => {
+        this.counter++
+      }, 1000)
+    }
   }
 }
 </script>
