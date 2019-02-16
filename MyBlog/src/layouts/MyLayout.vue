@@ -68,13 +68,9 @@
           <div>...content...</div>
         </q-collapsible>
       </q-collapsible>
-        <q-item to="link">
+        <q-item to="hi">
           <q-item-side icon="record_voice_over" />
           <q-item-main label="Знакомлюсь" sublabel="Познакомлюсь с девушкой ^_^" />
-        </q-item>
-        <q-item >
-          <q-item-side icon="chat" />
-          <q-item-main label="Личные достижения" sublabel="https://discord.gg/5TDhbDg" />
         </q-item>
         <q-item @click.native="openURL('https://vk.com/im?sel=44035224')">
           <q-item-side icon="send"  />
