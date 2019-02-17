@@ -44,17 +44,7 @@
           <q-item-side icon="book" />
           <q-item-main label="Кто я" sublabel="Немного обо мне" />
         </q-item>
-         <q-item to="link">
-          <q-item-side icon="school" />
-          <q-item-main label="Курсы" sublabel="Создаю курсы по известному" />
-        </q-item>
        <q-collapsible indent icon="school" label="Курсы" sublabel="Создаю курсы по известному">
-         <q-item
-          :to="'link'"
-         >
-          <q-item-side icon="rss feed" />
-          <q-item-main  sublabel="Системный анализ" />
-        </q-item>
         <q-collapsible label="Системный анализ">
           <q-item
           v-for="men in 5"
@@ -63,9 +53,6 @@
          >
           <q-item-main  :sublabel="men + ' Введение'" />
         </q-item>
-        </q-collapsible>
-        <q-collapsible label="Yesterday">
-          <div>...content...</div>
         </q-collapsible>
       </q-collapsible>
         <q-item to="hi">

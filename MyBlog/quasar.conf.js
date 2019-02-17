@@ -63,7 +63,11 @@ module.exports = function (ctx) {
         'QCardMedia',
         'QCardSeparator',
         'QCardActions',
-        'QPopover'
+        'QPopover',
+        'QCarousel',
+        'QCarouselSlide',
+        'QCarouselControl',
+        'QTree'
       ],
       directives: [
         'Ripple',

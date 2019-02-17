@@ -1,8 +1,8 @@
 <template>
-  <q-page class="flex ">
+  <q-page class="flex justify-center">
     <q-card
       dark
-      class="q-ma-md"
+      class="q-ma-md items-right"
       text-color="grey-3"
       inline style="width: 900px"
       :style="{'background-color': '#6A1B9A'}" >
@@ -26,13 +26,16 @@
               </q-item>
             </q-list>
           </q-popover>
-        </q-icon>
+        </q-icon>Кликни сюда
       </div>
     </q-card-title>
     <q-card-separator />
      <q-card-main>
-        <app-education v-if="title == 'Образование'"></app-education>
-        {{ lorem }}
+        <q-card-media v-if="title == 'Фото'">
+          <img src="../assets/vk_avatar.jpg">
+        </q-card-media>
+        <app-education v-else-if="title == 'Образование'"></app-education>
+        <app-work v-else-if="title == 'Карьера'"></app-work>
       </q-card-main>
     </q-card>
   </q-page>
@@ -43,15 +46,23 @@
 
 <script>
 import Education from '../components/education.vue'
+import Work from '../components/work.vue'
 
 export default {
   name: 'PageIndex',
   components: {
-    appEducation: Education
+    appEducation: Education,
+    appWork: Work
   },
   data () {
     return {
       types: [
+        {
+          label: 'Фото',
+          handler: () => {
+            this.category()
+          }
+        },
         {
           label: 'Образование',
           handler: () => {
@@ -79,7 +90,7 @@ export default {
         {
           label: 'Личные качества',
           handler: () => {
-            this.personalQuality(true)
+            this.personalQuality()
           }
         },
         {
@@ -89,14 +100,41 @@ export default {
           }
         }
       ],
-      title: 'Категория',
-      lorem: 'Выбери то, что хочешь узнать'
+      title: 'Фото'
     }
   },
   methods: {
+    category () {
+      this.title = 'Фото'
+    },
     education () {
       this.title = 'Образование'
-      this.lorem = 'Blead'
+    },
+    work () {
+      this.title = 'Карьера'
+    },
+    trackRecord () {
+      this.notify()
+    },
+    skills () {
+      this.notify()
+    },
+    personalQuality () {
+      this.notify()
+    },
+    hobby () {
+      this.notify()
+    },
+    notify () {
+      this.$q.notify({
+        message: `Упс! Данный функционал пока отсутсвует.`,
+        timeout: 1000, // in milliseconds; 0 means no timeout
+        type: 'warning',
+        textColor: 'black',
+        icon: 'build',
+        detail: 'Разрабатывается...',
+        position: 'center'
+      })
     }
   }
 }
