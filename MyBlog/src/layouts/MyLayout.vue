@@ -55,6 +55,10 @@
         </q-item>
         </q-collapsible>
       </q-collapsible>
+        <q-item to="rezume">
+          <q-item-side icon="record_voice_over" />
+          <q-item-main label="Резюме" sublabel="Хочешь идеальное резюме? Жми!" />
+        </q-item>
         <q-item to="hi">
           <q-item-side icon="record_voice_over" />
           <q-item-main label="Знакомлюсь" sublabel="Познакомлюсь с девушкой ^_^" />
