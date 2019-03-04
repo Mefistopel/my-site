@@ -4,34 +4,112 @@
       dark
       class="q-ma-md items-right"
       text-color="grey-3"
-      inline style="width: 900px"
+      inline
+      style="width: 900px"
       :style="{'background-color': '#6A1B9A'}" >
       <q-card-title>
         Резюме
         <span slot="subtitle">Пишем идеальное резюме вместе!</span>
-      <div slot="right" class="row items-center">
-        <q-icon slot="right" name="more_vert">
-          <q-popover>
-            <q-list
+        <div
+          slot="right"
+          class="row items-center">
+          <q-pagination
+            color="secondary"
+            text-color="red"
+            input
+            v-model="page"
+            :min="1"
+            :max="6" />
+        </div>
+      </q-card-title>
+      <q-card-separator />
+      <q-card-main>
+        <div v-show="page == 1">
+          <div class="row justify-around">
+            <q-input
               dark
-              :style="{'background-color': '#6A1B9A'}"
-              link
-              class="no-border">
-              <q-item
-                v-for="type in types"
-                :key="type.title"
-                @click.native="type.handler()"
-                v-close-overlay>
-                <q-item-main :label="type.label" />
-              </q-item>
-            </q-list>
-          </q-popover>
-        </q-icon>Кликни сюда
-      </div>
-    </q-card-title>
-    <q-card-separator />
-     <q-card-main>
-        <button @click="toPDF">Click</button>
+              color="secondary"
+              v-model="lastName"
+              float-label="Фамилия">
+              <q-tooltip :delay="500" >Например: Янусов</q-tooltip>
+            </q-input>
+            <q-input
+              dark
+              color="secondary"
+              v-model="firstName"
+              float-label="Имя">
+              <q-tooltip :delay="500" >Например: Андрей</q-tooltip>
+            </q-input>
+            <q-input
+              dark
+              color="secondary"
+              v-model="middleName"
+              float-label="Отчество">
+              <q-tooltip :delay="500" >Например: Сергеевич</q-tooltip>
+            </q-input>
+          </div>
+
+          <br><br><br>
+
+          <div class="row justify-around">
+            <q-datetime
+              dark
+              color="secondary"
+              float-label="Дата рождения"
+              v-model="brithData"
+              type="date" />
+            <q-input
+              dark
+              color="secondary"
+              float-label="Место рождения"
+              v-model.number="indexPR">
+              <q-tooltip :delay="500" >Например: Московская обл., г. Москва</q-tooltip>
+            </q-input>
+          </div>
+
+          <br><br><br>
+
+          <div class="row justify-around">
+            <q-input
+              dark
+              type="textarea"
+              color="secondary"
+              float-label="Адрес проживания"
+              v-model="address"
+              class="col-8">
+              <q-tooltip :delay="500" >Например: Московская обл., г. Москва, ул. Янусова, д. 15, кв. 12</q-tooltip>
+            </q-input>
+            <q-input
+              dark
+              color="secondary"
+              float-label="Индекс (по почте России)"
+              :count="6"
+              v-model.number="indexPR"/>
+          </div>
+
+          <br><br><br>
+
+          <div class="row justify-around">
+            <q-input
+              dark
+              color="secondary"
+              float-label="Семейное положение"
+              v-model.number="indexPR">
+              <q-tooltip :delay="500" >Например: холост</q-tooltip>
+            </q-input>
+          </div>
+        </div>
+        <div v-show="page == 2">
+          <h5>Образование</h5>
+        </div>
+
+        <br>
+        <q-btn
+          class="justify justify-center"
+          @click="toPDF"
+          color="secondary"
+          icon="save"
+          label="Скачать резюме" />
       </q-card-main>
     </q-card>
   </q-page>
@@ -41,90 +119,27 @@
 </style>
 
 <script>
-import Education from '../components/education'
-import Work from '../components/work'
-import trackRecord from '../components/trackRecord'
+import JSPDF from 'jspdf'
 
 export default {
   name: 'PageIndex',
-  components: {
-    appEducation: Education,
-    appWork: Work,
-    trackRecord: trackRecord
-  },
   data () {
     return {
-      types: [
-        {
-          label: 'Фото',
-          handler: () => {
-            this.category()
-          }
-        },
-        {
-          label: 'Образование',
-          handler: () => {
-            this.education()
-          }
-        },
-        {
-          label: 'Карьера',
-          handler: () => {
-            this.work()
-          }
-        },
-        {
-          label: 'Достижения',
-          handler: () => {
-            this.trackRecord()
-          }
-        },
-        {
-          label: 'Навыки, знания',
-          handler: () => {
-            this.skills()
-          }
-        },
-        {
-          label: 'Личные качества',
-          handler: () => {
-            this.personalQuality()
-          }
-        },
-        {
-          label: 'Интересы, хобби',
-          handler: () => {
-            this.hobby()
-          }
-        }
-      ],
-      title: 'Фото'
+      firstName: '',
+      lastName: '',
+      middleName: '',
+      indexPR: '',
+      address: '',
+      brithData: null,
+      page: 1
     }
   },
   methods: {
     toPDF () {
-
-    },
-    category () {
-      this.title = 'Фото'
-    },
-    education () {
-      this.title = 'Образование'
-    },
-    work () {
-      this.title = 'Карьера'
-    },
-    trackRecord () {
-      this.title = 'Достижения'
-    },
-    skills () {
-      this.notify()
-    },
-    personalQuality () {
-      this.notify()
-    },
-    hobby () {
-      this.notify()
+      let pdfName = 'Резюме ' + this.firstName
+      var doc = new JSPDF()
+      doc.text(this.lastName + ' ' + this.firstName + ' ' + this.middleName, 10, 10)
+      doc.save(pdfName + '.pdf')
     },
     notify () {
       this.$q.notify({

@@ -1,6 +1,11 @@
 <template>
-  <q-page padding style="max-width: 800px">
-    <q-timeline responsive color="secondary" style="padding: 0 24px;">
+  <q-page
+    padding
+    style="max-width: 800px">
+    <q-timeline
+      responsive
+      color="secondary"
+      style="padding: 0 24px;">
       <q-timeline-entry heading>Что произошло</q-timeline-entry>
 
       <q-timeline-entry
@@ -9,11 +14,15 @@
         side="left"
       >
         <div>
-          В рамках всероссийской олимпиады "<a style="color: white" href="https://yandex.ru/profi/">Я профессионал</a>"
-          принял участие в Зимней школе Президентской академии, которая проводилась в стенах РАНХиГС в Москве.
+          В рамках всероссийской олимпиады "<a
+            style="color: white"
+            href="https://yandex.ru/profi/">Я профессионал</a>"
+            принял участие в Зимней школе Президентской академии, которая проводилась в стенах РАНХиГС в Москве.
         </div>
         <div>
-            <i>Подробнее по <a style="color: white" href="https://vk.com/an.yanusov?w=wall44035224_2030">ссылке</a>.</i>
+          <i>Подробнее по <a
+            style="color: white"
+            href="https://vk.com/an.yanusov?w=wall44035224_2030">ссылке</a>.</i>
         </div>
       </q-timeline-entry>
 

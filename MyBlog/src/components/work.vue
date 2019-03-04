@@ -1,13 +1,15 @@
 <template>
-     <div class="q-pa-md" style="border-radius: 5px">
-        <q-tree
-          color='white'
-          text-color='grey-4'
-          dark
-          :nodes="props"
-          node-key="label"
-        />
-      </div>
+  <div
+    class="q-pa-md"
+    style="border-radius: 5px">
+    <q-tree
+      color='white'
+      text-color='grey-4'
+      dark
+      :nodes="props"
+      node-key="label"
+    />
+  </div>
 </template>
 
 <script>

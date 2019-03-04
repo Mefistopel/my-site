@@ -42,34 +42,48 @@
         <q-list-header>Страницы</q-list-header>
         <q-item to="about">
           <q-item-side icon="book" />
-          <q-item-main label="Кто я" sublabel="Немного обо мне" />
+          <q-item-main
+            label="Кто я"
+            sublabel="Немного обо мне" />
         </q-item>
-       <q-collapsible indent icon="school" label="Курсы" sublabel="Создаю курсы по известному">
-        <q-collapsible label="Системный анализ">
-          <q-item
-          v-for="men in 5"
-          :key="men"
-          :to="'link'"
-         >
-          <q-item-main  :sublabel="men + ' Введение'" />
-        </q-item>
+        <q-collapsible
+          indent
+          icon="school"
+          label="Курсы"
+          sublabel="Создаю курсы по известному">
+          <q-collapsible label="Системный анализ">
+            <q-item
+              v-for="men in 5"
+              :key="men"
+              :to="'link'"
+            >
+              <q-item-main :sublabel="men + ' Введение'" />
+            </q-item>
+          </q-collapsible>
         </q-collapsible>
-      </q-collapsible>
         <q-item to="rezume">
-          <q-item-side icon="record_voice_over" />
-          <q-item-main label="Резюме" sublabel="Хочешь идеальное резюме? Жми!" />
+          <q-item-side icon="work" />
+          <q-item-main
+            label="Резюме"
+            sublabel="Хочешь идеальное резюме? Жми!" />
         </q-item>
         <q-item to="hi">
           <q-item-side icon="record_voice_over" />
-          <q-item-main label="Знакомлюсь" sublabel="Познакомлюсь с девушкой ^_^" />
+          <q-item-main
+            label="Знакомлюсь"
+            sublabel="Познакомлюсь с девушкой ^_^" />
         </q-item>
         <q-item @click.native="openURL('https://vk.com/im?sel=44035224')">
-          <q-item-side icon="send"  />
-          <q-item-main label="Напиши мне в ВК!" sublabel="Давай, не стесняйся!" />
+          <q-item-side icon="send" />
+          <q-item-main
+            label="Напиши мне в ВК!"
+            sublabel="Давай, не стесняйся!" />
         </q-item>
         <q-item @click.native="openURL('https://www.instagram.com/an.yanusov/')">
           <q-item-side icon="check_box" />
-          <q-item-main label="Instagramm" sublabel="@an.yanusov" />
+          <q-item-main
+            label="Instagramm"
+            sublabel="@an.yanusov" />
         </q-item>
       </q-list>
     </q-layout-drawer>

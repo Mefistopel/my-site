@@ -4,7 +4,9 @@
       <q-list>
         <q-item>
           <q-item-side>
-            <q-item-tile color="primary" icon="local bar" />
+            <q-item-tile
+              color="primary"
+              icon="local bar" />
           </q-item-side>
           <q-item-main>
             <q-item-tile label>Bar XYZ</q-item-tile>
@@ -13,7 +15,9 @@
         </q-item>
         <q-item>
           <q-item-side>
-            <q-item-tile color="red" icon="local gas station" />
+            <q-item-tile
+              color="red"
+              icon="local gas station" />
           </q-item-side>
           <q-item-main>
             <q-item-tile label>Gas Station</q-item-tile>
@@ -22,7 +26,9 @@
         </q-item>
         <q-item>
           <q-item-side>
-            <q-item-tile color="amber" icon="local movies" />
+            <q-item-tile
+              color="amber"
+              icon="local movies" />
           </q-item-side>
           <q-item-main>
             <q-item-tile label>Cinema XYZ</q-item-tile>

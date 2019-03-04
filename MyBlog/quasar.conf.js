@@ -69,7 +69,11 @@ module.exports = function (ctx) {
         'QCarouselControl',
         'QTree',
         'QTimeline',
-        'QTimelineEntry'
+        'QTimelineEntry',
+        'QInput',
+        'QPagination',
+        'QDatetime',
+        'QTooltip'
       ],
       directives: [
         'Ripple',

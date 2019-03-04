@@ -4,39 +4,44 @@
       dark
       class="q-ma-md items-right"
       text-color="grey-3"
-      inline style="width: 900px"
+      inline
+      style="width: 900px"
       :style="{'background-color': '#6A1B9A'}" >
       <q-card-title>
         {{ title }}
         <span slot="subtitle">Янусов Андрей Сергеевич</span>
-      <div slot="right" class="row items-center">
-        <q-icon slot="right" name="more_vert">
-          <q-popover>
-            <q-list
-              dark
-              :style="{'background-color': '#6A1B9A'}"
-              link
-              class="no-border">
-              <q-item
-                v-for="type in types"
-                :key="type.title"
-                @click.native="type.handler()"
-                v-close-overlay>
-                <q-item-main :label="type.label" />
-              </q-item>
-            </q-list>
-          </q-popover>
-        </q-icon>Кликни сюда
-      </div>
-    </q-card-title>
-    <q-card-separator />
-     <q-card-main>
+        <div
+          slot="right"
+          class="row items-center">
+          <q-icon
+            slot="right"
+            name="more_vert">
+            <q-popover>
+              <q-list
+                dark
+                :style="{'background-color': '#6A1B9A'}"
+                link
+                class="no-border">
+                <q-item
+                  v-for="type in types"
+                  :key="type.title"
+                  @click.native="type.handler()"
+                  v-close-overlay>
+                  <q-item-main :label="type.label" />
+                </q-item>
+              </q-list>
+            </q-popover>
+          </q-icon>Кликни сюда
+        </div>
+      </q-card-title>
+      <q-card-separator />
+      <q-card-main>
         <q-card-media v-if="title == 'Фото'">
           <img src="../assets/vk_avatar.jpg">
         </q-card-media>
-        <app-education v-else-if="title == 'Образование'"></app-education>
-        <app-work v-else-if="title == 'Карьера'"></app-work>
-        <track-record v-else-if="title == 'Достижения'"></track-record>
+        <app-education v-else-if="title == 'Образование'"/>
+        <app-work v-else-if="title == 'Карьера'"/>
+        <track-record v-else-if="title == 'Достижения'"/>
       </q-card-main>
     </q-card>
   </q-page>
