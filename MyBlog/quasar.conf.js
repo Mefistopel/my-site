@@ -55,10 +55,29 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QCollapsible',
+        'QCard',
+        'QCardTitle',
+        'QCardMain',
+        'QCardMedia',
+        'QCardSeparator',
+        'QCardActions',
+        'QPopover',
+        'QCarousel',
+        'QCarouselSlide',
+        'QCarouselControl',
+        'QTree',
+        'QTimeline',
+        'QTimelineEntry',
+        'QInput',
+        'QPagination',
+        'QDatetime',
+        'QTooltip'
       ],
       directives: [
-        'Ripple'
+        'Ripple',
+        'CloseOverlay'
       ],
       // Quasar plugins
       plugins: [
